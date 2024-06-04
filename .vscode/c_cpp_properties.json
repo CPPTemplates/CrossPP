@@ -23,6 +23,7 @@
                 "C:/msys64/mingw64/include/c++/14.1.0/x86_64-w64-mingw32",
                 "C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.1.0/include",
                 "${workspaceFolder}/build/Release/_deps/sfml-src/include",
+                "${workspaceFolder}/build/Debug/_deps/sfml-src/include",
                 "${workspaceFolder}/lib/headers"
             ],
             "compilerPath": "C:/msys64/mingw64/bin/g++.exe",
