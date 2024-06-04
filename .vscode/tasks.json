@@ -2,8 +2,7 @@
     "version": "2.0.0",
     "options": {
         "cwd": "${workspaceFolder}/build/${config:buildType}",
-        "env": {
-        },
+        "env": {},
     },
     "tasks": [
         {
@@ -19,8 +18,7 @@
             "osx": {
                 "command": "make -j$((`sysctl -n hw.ncpu`))"
             },
-            "options": {
-            },
+            "options": {},
             "problemMatcher": [],
             "group": {
                 "kind": "build",
@@ -28,24 +26,48 @@
             }
         },
         {
-            
-            "label": "populate",
+            "label": "populate1",
             "type": "shell",
             "windows": {
-                "command": "mkdir build/${config:buildType} && cmake -B . -S ../.. -G Ninja -DCMAKE_BUILD_TYPE=${config:buildType}"
+                "command": "powershell",
+                "args": [
+                    "-NoProfile",
+                    "-Command",
+                    "if (-Not (Test-Path -Path 'build/${config:buildType}')) { New-Item -ItemType Directory -Path 'build/${config:buildType}' }; cmake -B build/${config:buildType} -S . -G Ninja -DCMAKE_BUILD_TYPE=${config:buildType}"
+                ]
             },
-            //"options": {
-            //    "cwd": "${workspaceFolder}/build/${config:buildType}",
-            //    "env": {
-            //        "buildType": "Release"
-            //    },
-            //},
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {}
+            },
             "problemMatcher": [],
             "group": {
                 "kind": "build",
                 "isDefault": true
             }
         },
+        //{
+        //    "label": "populate",
+        //    "type": "shell",
+        //    "windows": {
+        //        "command": "mkdir build/${config:buildType} && cmake -B build/${config:buildType} -S . -G Ninja -DCMAKE_BUILD_TYPE=${config:buildType}"
+        //    },
+        //    //"options": {
+        //    //    "cwd": "${workspaceFolder}/build/${config:buildType}",
+        //    //    "env": {
+        //    //        "buildType": "Release"
+        //    //    },
+        //    //},
+        //    "options": {
+        //        "cwd": "${workspaceFolder}",
+        //        "env": {},
+        //    },
+        //    "problemMatcher": [],
+        //    "group": {
+        //        "kind": "build",
+        //        "isDefault": true
+        //    }
+        //},
         {
             "label": "clean",
             "type": "shell",
