@@ -1,6 +1,6 @@
 {
     //this has to match perfectly! either Release or Debug
-    "buildType": "Debug",
+    "buildType": "Release",
     "C_Cpp.errorSquiggles": "enabled",
     //"dotnet.defaultSolution": "disable"
     "cmake.generator": "Ninja",

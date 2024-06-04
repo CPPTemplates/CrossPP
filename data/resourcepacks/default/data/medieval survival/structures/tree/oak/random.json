@@ -1,0 +1,40 @@
+{
+  "elements": [
+    {
+      "weight": 32,
+      "element": {
+        "location": "big"
+      }
+    },
+    {
+      "weight": 16,
+      "element": {
+        "location": "small"
+      }
+    },
+    {
+      "weight": 4,
+      "element": {
+        "location": "giant"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "small_decaying"
+      }
+    },
+    {
+      "weight": 4,
+      "element": {
+        "location": "big_decaying"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "giant_decaying"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "small_tower_base"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "fat_tower_base"
+      }
+    }
+  ]
+}

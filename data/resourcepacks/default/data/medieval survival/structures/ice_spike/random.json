@@ -1,0 +1,22 @@
+{
+  "elements": [
+    {
+      "weight": 32,
+      "element": {
+        "location": "big"
+      }
+    },
+    {
+      "weight": 16,
+      "element": {
+        "location": "small"
+      }
+    },
+    {
+      "weight": 4,
+      "element": {
+        "location": "giant"
+      }
+    }
+  ]
+}

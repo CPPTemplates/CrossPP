@@ -1,0 +1,34 @@
+{
+  "elements": [
+    {
+      "weight": 2,
+      "element": {
+        "location": "lava_well_room"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "blaze_spawner"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "location": "bridge_open_intersection"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "bridge_closed_intersection"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "bridge_staircase"
+      }
+    }
+  ]
+}
