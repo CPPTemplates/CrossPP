@@ -32,7 +32,7 @@
             "label": "populate",
             "type": "shell",
             "windows": {
-                "command": "cmake -B . -S ../.. -G Ninja -DCMAKE_BUILD_TYPE=${config:buildType}" // <-- ld returned 5 exit status
+                "command": "mkdir build/${config:buildType} && cmake -B . -S ../.. -G Ninja -DCMAKE_BUILD_TYPE=${config:buildType}"
             },
             //"options": {
             //    "cwd": "${workspaceFolder}/build/${config:buildType}",
