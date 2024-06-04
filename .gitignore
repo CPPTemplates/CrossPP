@@ -1,0 +1,8 @@
+#GITIGNORE 1:
+x64
+old data
+Output
+models
+ndk
+old
+build

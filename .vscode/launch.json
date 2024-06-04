@@ -1,0 +1,94 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Launch",
+            "osx": {
+                "MIMode": "lldb"
+            },
+            "windows": {
+                "MIMode": "gdb",
+                //"miDebuggerPath": "${command:cmake.buildkit.gdb.exe}",
+                "miDebuggerPath": "C:\\msys64\\mingw64\\bin\\gdb.exe",
+                //"MIMode": "lldb", //clang
+                //"miDebuggerPath": "C:\\msys64\\clang64\\bin\\lldb.exe"
+                //"environment": [
+                //    {
+                //        "name": "PATH",
+                //        "value": "${command:cmake.buildkit.launch.path}"
+                //    }
+                //],
+            },
+            "linux": {
+                "MIMode": "gdb"
+            },
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/${config:buildType}/a",
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "make",
+            "args": [],
+            "externalConsole": false,
+            "environment": [],
+            //"visualizerFile": "${workspaceFolder}/visualization.natvis",
+            //"showDisplayString": true,
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "text": "catch throw",
+                    "description": "Catch all exceptions"
+                },
+                {
+                    "text": "b exit",
+                    "description": "Catch Terminate"
+                },
+                {
+                    "text": "set breakpoint pending on",
+                    "description": "Ensures that a breakpoint for abort will be set!",
+                    "ignoreFailures": true
+                },
+                {
+                    "text": "break abort",
+                    "description": "Breaks on failed asserts",
+                    "ignoreFailures": true
+                },
+                {
+                    "text": "set breakpoint pending auto",
+                    "description": "Setting back to default behaviour",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Disable ThreadEvent Messages",
+                    "text": "-interpreter-exec console \"set print thread-events off\"",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+        //,
+        //{
+        //    "type": "cmake",
+        //    "request": "launch",
+        //    "name": "CMake: Script debugging",
+        //    "cmakeDebugType": "script",
+        //    "scriptPath": "${workspaceFolder}/CMakeLists.txt"
+        //},
+        //{
+        //    "name": "CMake: CMake Script",
+        //    "type": "cmake",
+        //    "request": "launch",
+        //    "cmakeDebugType": "script",
+        //    "scriptPath": "${file}"
+        //}
+    ]
+}

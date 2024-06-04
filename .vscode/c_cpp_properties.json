@@ -1,0 +1,47 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${default}",
+                "${workspaceFolder}/**",
+                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers",
+                "${workspaceFolder}/build/Debug/_deps/sfml-src/include"
+            ],
+            "cStandard": "gnu23",
+            "cppStandard": "gnu++23",
+            "intelliSenseMode": "macos-gcc-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        },
+        {
+            "name": "Win32",
+            "includePath": [
+                "${default}",
+                "${workspaceFolder}/src",
+                "${workspaceFolder}/src/include",
+                "C:/msys64/mingw64/include/c++/14.1.0",
+                "C:/msys64/mingw64/include/c++/14.1.0/x86_64-w64-mingw32",
+                "C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.1.0/include",
+                "${workspaceFolder}/build/Release/_deps/sfml-src/include",
+                "${workspaceFolder}/lib/headers"
+            ],
+            "compilerPath": "C:/msys64/mingw64/bin/g++.exe",
+            "cStandard": "gnu23",
+            "cppStandard": "gnu++23",
+            "intelliSenseMode": "windows-gcc-x64"
+        },
+        {
+            "name": "Linux",
+            "includePath": [
+                "${default}",
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/build/Debug/_deps/sfml-src/include"
+            ],
+            "compilerPath": "/usr/bin/g++",
+            "cStandard": "gnu23",
+            "cppStandard": "gnu++23",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}

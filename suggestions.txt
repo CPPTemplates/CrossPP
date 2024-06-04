@@ -1,0 +1,32 @@
+make more colorful
+creative menu
+
+recipe book bij craften
+vogels
+autosave
+linkermuisknop slepen om items te verdelen
+hoppers
+observers
+horses
+pick stack: middleclick in inventory in creative
+wind geluid
+naast inventory klikken = droppen
+q = droppen
+hay_bale
+armor stand
+save chat
+save options
+breeding / feeding animals
+creative middle click block data copy
+grass blocks worden snowy als er sneeuw boven zit
+bone meal particles
+text shadow everywhere
+erin:
+antialiasing
+pick block
+wereld converter: convert de hele wereld naar een nieuwe versie
+make falling blocks render like block items
+add more files to stdafx.h
+sweeping edge attack
+signs
+edit humanoid::updateSelection() to make continuous digging doable

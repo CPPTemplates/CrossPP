@@ -1,0 +1,1 @@
+/data merge block ~ ~ {loot table name: "stronghold_corridor"}

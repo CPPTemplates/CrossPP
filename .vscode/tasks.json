@@ -1,0 +1,69 @@
+{
+    "version": "2.0.0",
+    "options": {
+        "cwd": "${workspaceFolder}/build/${config:buildType}",
+        "env": {
+        },
+    },
+    "tasks": [
+        {
+            "label": "make",
+            "type": "shell",
+            "windows": {
+                //spare one processor for usage so we can keep coding while compiling
+                "command": "ninja.exe -j11"
+            },
+            "linux": {
+                "command": "make -j$((`nproc`))"
+            },
+            "osx": {
+                "command": "make -j$((`sysctl -n hw.ncpu`))"
+            },
+            "options": {
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            
+            "label": "populate",
+            "type": "shell",
+            "windows": {
+                "command": "cmake -B . -S ../.. -G Ninja -DCMAKE_BUILD_TYPE=${config:buildType}" // <-- ld returned 5 exit status
+            },
+            //"options": {
+            //    "cwd": "${workspaceFolder}/build/${config:buildType}",
+            //    "env": {
+            //        "buildType": "Release"
+            //    },
+            //},
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "windows": {
+                "command": "ninja --version -t clean"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "empty build folder",
+            "type": "shell",
+            "windows": {
+                "command": "Remove-Item -Path \"${workspaceFolder}\\build\\*\" -Recurse"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+	<Type Name="fastList&lt;*&gt;">
+		<DisplayString>{{ size={size} }}</DisplayString>
+		<Expand>
+			<Item Name="[size]" ExcludeView="simple">size</Item>
+			<Item Name="[newSize]" ExcludeView="simple">newSize</Item>
+			<ArrayItems>
+				<Size>size</Size>
+				<ValuePointer>baseArray</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+	<Type Name="fastArray&lt;*&gt;">
+		<DisplayString>{{ size={size} }}</DisplayString>
+		<Expand>
+			<Item Name="[size]" ExcludeView="simple">size</Item>
+			<ArrayItems>
+				<Size>size</Size>
+				<ValuePointer>baseArray</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+	<Type Name="vectn&lt;*&gt;">
+		<DisplayString>{{ {($T1*)axis,$T2na} }}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>$T2</Size>
+				<ValuePointer>axis</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+	<Type Name="arraynd&lt;*,*&gt;">
+		<DisplayString>{{ size={size} }}</DisplayString>
+		<Expand>
+			<ArrayItems Condition="baseArray != 0">
+				<Direction>Forward</Direction>
+				<Rank>$T2</Rank>
+				<Size>size.axis[$i]</Size>
+				<ValuePointer>baseArray</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+	<Type Name="audio2dt&lt;*&gt;">
+		<DisplayString>{{ size={size} }}</DisplayString>
+		<Expand>
+			<Item Name="[size]" ExcludeView="simple">size</Item>
+			<Item Name="[newSize]" ExcludeView="simple">newSize</Item>
+			<ArrayItems>
+				<Size>size</Size>
+				<ValuePointer>baseArray</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+	<Type Name="nbtData">
+		<DisplayString>{{ {name} : {dataTag} }}</DisplayString>
+		<Expand>
+		</Expand>
+	</Type>
+	<Type Name="nbtCompound">
+		<DisplayString>{{{name}: {dataTag}: children:{children} }}</DisplayString>
+		<Expand>
+		</Expand>
+	</Type>
+</AutoVisualizer>

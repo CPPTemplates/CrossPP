@@ -1,0 +1,114 @@
+
+van meest irritant naar minst irritant / nodig:
+
+ai list not serialized correctly
+
+playerdata copies to installation
+depth strider ook niet
+boat werkt niet
+ender_eye vliegt veel te hoog
+knockback doet het niet
+als je rechtermuisknop doet in een crafting table met een stack blokjes denkt hij soms dat je meerdere keren achter elkaar klikt, en stopt hij er meerdere op 1 slot
+can't craft/ je kan niet 1 blockje tegelijk plaatsen in de hotbar/crafting slots
+installer stays open on first launch
+keyboard can't paste
+armor texture glitcht hot bar en op de pop
+boats sink in water
+je gaat uit je inv. als je word geduwd door een piston
+rechter muisknop pakt alles van een stack
+placing bed removes crafting table
+water can be placed in the nether
+double slabs
+sugarcane breekt niet als je het onderste blockje breekt
+armor equip geluid hoor je niet als je rechter muisknop doet, maar wel als je het in je inventory doet.
+Flame enchant werkt niet
+piston extanding side ways
+rightclicking on spawner with spawn egg doesn't set entity
+crashing whem igniting a lot of tnt in the end while being stuck in an ender dragon: dimensionIn could not be read
+blazes blijven vliegen, terwijl ze alleen moeten gaan vliegen als mensen eraan komen
+xp bottles not working
+wolf richt niet op wie hij aanvalt
+enchanted golden apples absorption effect
+crops geven niet alle drops
+cauldron texture glitch
+no drowning
+mobs attack on side
+check hitbox bed
+lever texture not showing correctly
+lectern has no facing data
+items not stacking in inventory
+view distance not saved with world
+
+falling block entity gaat dood en dropt een item maar plaatst ook een blokje
+falling block entity blijft drijven
+schemering kleuren veranderen plotseling, kleurinterpolatie werkt niet goed? bioomkleur
+geen klik geluid repeater/comparator instellen
+glass pane = glassblock
+creative shouldn't be affected by wind speed
+itemstack gedropt door zombie: iron werd niet aan de slots achterin toegevoegd
+armor equip geluid doet het niet meer
+mobs spawn in blocks(hostile mobs) en items stay alive in blocks
+als je uit een wereld gaat en een nieuwe create, ben je nog evenver uit gezoomd
+lever werkt niet/niet goed
+piston verwijdert blokjes in vliegmachine (als piston zelf ook wordt geduwd)
+vliegende blokjes kunnen je laten vastzitten
+water pools on lava pools in swamp
+buttons/torches/redstone wire floating when the block they are attached to is removed/ kan je op elkaar plaatsen	
+2 dragons when teleporting back to main island after closing the game
+piston block entity remains
+piston block removes other piston block when extending (you shouldn't be allowed to place blocks in an extending piston block)
+when placing trees, check the whole base
+
+je kan blokken met rode hitboxen breken zonder op de rode hitboxen te klikken (je kan bijv. geen kip slaan op een sneeuwlaag, want dan breek je de sneeuwlaag)
+
+pijlen gaan niet ver genoeg
+draken vliegen te snel
+slime die dood gaat geeft geen geluid
+explosion destroys obsidian
+geanimeerde textures kunnen fout getekend worden als de resourcepack minder animatieplaatjes heeft dan de minecraft texture
+
+
+opgelost:
+flying bushes mesa biome
+piston glitches when expanding (texture)
+mob hit box checking while spawning
+piston head niet zichtbaar.
+redstone torch doens't save block data. maybe more block types?
+selflearningAI verwijderd
+chest geluid
+fire texture not changing resolution
+blokken plaatsen lukt niet altijd, lijkt te maken te hebben met FPS vs TPS
+blokken dichtbij plaatsen blokkeert
+skeleton pijlen
+benen bewegen te snel
+floating slots stuck in blocks
+skeleton drops nothing
+skeletons doen pauperveel damage
+piston hitboxes sending error messages in chat
+aangevallen in creative mode
+visible lag (frames aren't smooth)
+night
+logs/pistons/beds worden een blokje lager getekend dan ze horen 
+brandend fornuis is anders dan niet brandend, animatie word niet gerenderd
+honger gaat te snel omlaag in water
+sneaken doet het niet
+fluid friction way too high
+sugarcane rare
+blokken worden niet gerenderd
+attached block data
+mobs targeten je niet meer als je dood bent gegaan
+spawn egg of spawner showing up giant
+stairs zien er niet uit als stairs en werken niet als stairs(tot nu toe allen bij cobblestone, hoewel de plaatjes ook niet kloppen in je hotbar)
+extending pistons render incorrectly
+je kan springen boven groene hitboxen
+arrows sometimes go through entities
+form world creator gaat niet leeg na het aanmaken
+mobs keep jumping for no reason
+middle click not working
+power op een bow werkt niet
+caps lock not working
+opslaan lukt niet want human wordt mee opgeslagen
+infinity op een bow werkt niet
+enderpearl gooien = error
+
+mobs vallen aan terwijl ze je niet zien
