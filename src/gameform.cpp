@@ -110,13 +110,6 @@ void gameForm::layout(crectanglei2 &rect)
 	{
 		c->layout(rect);
 	}
-	// currentMainMenu->layout(rect);
-	// currentWorldSelector->layout(rect);
-	// currentWorldCreator->layout(rect);
-	// currentServerSelector->layout(rect);
-	// currentServerEditor->layout(rect);
-	// currentClient->layout(rect);
-	// currentAccountEditor->layout(rect);
 }
 
 gameForm::gameForm() : form()
