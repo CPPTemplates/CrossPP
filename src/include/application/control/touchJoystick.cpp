@@ -1,5 +1,5 @@
 #include "touchJoystick.h"
-#include "math/graphics/brush/colorMixer.h"
+#include "math/graphics/brush/brushes/colorMixer.h"
 #include "math/graphics/brush/brushes/solidColorBrush.h"
 #include "math/graphics/graphicsFunctions.h"
 

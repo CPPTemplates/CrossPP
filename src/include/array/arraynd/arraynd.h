@@ -8,7 +8,6 @@
 #include "math/graphics/brush/brush.h"
 #include "math/graphics/brush/transformbrush.h"
 #include "math/axis.h"
-#include "math/graphics/brush/colorMixer.h"
 #include "math/vector/vectorfunctions.h"
 
 template <typename t, fsize_t n>

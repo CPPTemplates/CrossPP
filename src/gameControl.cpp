@@ -379,6 +379,9 @@ void gameControl::renderGame(crectanglei2 &rect, const texture &renderTarget, cb
 {
     // start drawing
 
+    // make the image transparent. that way, the sky will only be rendered to parts which are not transparent.
+    renderTarget.fill(colorPalette::transparent);
+
     cfp &secondsBetweenTickAndRender = (fp)(currentFrameStartSeconds - lastTickTime);
     player->updateBodyParts();
     vec2 headPosition = player->getHeadPosition();
@@ -418,6 +421,7 @@ void gameControl::renderGame(crectanglei2 &rect, const texture &renderTarget, cb
     pos00 = blocksToBeDrawn.pos0;
     pos11 = blocksToBeDrawn.pos1();
 
+    // the distance from which light levels will be interpolated
     constexpr int averageDistance = 1;
     constexpr int averageDistance2 = averageDistance * 2;
     constexpr int averageDiametre = 1 + averageDistance2;
@@ -446,11 +450,14 @@ void gameControl::renderGame(crectanglei2 &rect, const texture &renderTarget, cb
     const array2d<bool> &isWhite = array2d<bool>(surroundingArrayRect.size);
     const array2d<squareInterpolator> &interpolators = array2d<squareInterpolator>(
         surroundingArrayRect.size);
-    const vect2<fastArray<bool>> &rendered =
+
+    // this array specifies which coordinates on the x and y axis are going to be rendered. this optimizes rendering when zoomed out so far that blocks are smaller than one pixel.
+    const vect2<fastArray<bool>> &shouldRenderAxis =
         vect2<fastArray<bool>>(
             fastArray<bool>(blocksToBeDrawn.size.x),
             fastArray<bool>(blocksToBeDrawn.size.y));
 
+    // calculate shouldRenderAxis
     for (size_t axis = 0; axis < 2; axis++)
     {
         for (int i = 0; i < blocksToBeDrawn.size[axis]; i++)
@@ -462,16 +469,17 @@ void gameControl::renderGame(crectanglei2 &rect, const texture &renderTarget, cb
             crectanglei2 &screenRect = ceilRectangle(
                 targetData.worldToRenderTargetTransform.multRectMatrix(blockRect));
 
-            rendered[axis][i] = screenRect.size[axis];
+            shouldRenderAxis[axis][i] = screenRect.size[axis];
         }
     }
 
+    // calculate if the light color on each block is black, white, or anything between
     for (cveci2 &renderPosition : blocksToBeDrawn)
     {
         cveci2 &relativePosition = renderPosition - pos00;
-        if (rendered[axisID::y][relativePosition.y])
+        if (shouldRenderAxis[axisID::y][relativePosition.y])
         {
-            if (rendered[axisID::x][relativePosition.x])
+            if (shouldRenderAxis[axisID::x][relativePosition.x])
             {
                 if (currentWorld->xray)
                 {
@@ -557,15 +565,6 @@ void gameControl::renderGame(crectanglei2 &rect, const texture &renderTarget, cb
                         }
                     }
                 }
-
-                if (!isBlack.getValueUnsafe(relativePosition))
-                {
-                    // render sky
-                    crectangle2 &blockRect = crectangle2(renderPosition, cveci2(1));
-                    crectangle2 &screenRect = targetData.worldToRenderTargetTransform.multRectMatrix(
-                        blockRect);
-                    dimensionIn->renderSky(blockRect, screenRect, targetData);
-                }
             }
         }
     }
@@ -592,9 +591,9 @@ void gameControl::renderGame(crectanglei2 &rect, const texture &renderTarget, cb
     for (cveci2 &renderPosition : blocksToBeDrawn)
     {
         cveci2 &relativePosition = renderPosition - pos00;
-        if (rendered[axisID::y][relativePosition.y])
+        if (shouldRenderAxis[axisID::y][relativePosition.y])
         {
-            if (rendered[axisID::x][relativePosition.x])
+            if (shouldRenderAxis[axisID::x][relativePosition.x])
             {
                 // fill block texture
                 const blockID &identifier = surroundingBlocks.getValue(
@@ -616,9 +615,9 @@ void gameControl::renderGame(crectanglei2 &rect, const texture &renderTarget, cb
     for (cveci2 &renderPosition : blocksToBeDrawn)
     {
         cveci2 &relativePosition = renderPosition - pos00;
-        if (rendered[axisID::y][relativePosition.y])
+        if (shouldRenderAxis[axisID::y][relativePosition.y])
         {
-            if (rendered[axisID::x][relativePosition.x])
+            if (shouldRenderAxis[axisID::x][relativePosition.x])
             {
                 // fill block texture
                 const blockID &identifier = surroundingBlocks.getValue(
@@ -679,9 +678,9 @@ void gameControl::renderGame(crectanglei2 &rect, const texture &renderTarget, cb
     for (cveci2 &renderPosition : blocksToBeDrawn)
     {
         cveci2 &relativePosition = renderPosition - pos00;
-        if (rendered[axisID::y][relativePosition.y])
+        if (shouldRenderAxis[axisID::y][relativePosition.y])
         {
-            if (rendered[axisID::x][relativePosition.x])
+            if (shouldRenderAxis[axisID::x][relativePosition.x])
             {
                 crectangle2 &blockScreenRect = targetData.worldToRenderTargetTransform.multRectMatrix(
                     crectangle2(cvec2(renderPosition), cvec2(1)));
@@ -1013,6 +1012,30 @@ void gameControl::renderGame(crectanglei2 &rect, const texture &renderTarget, cb
             if (++bossBarIndex >= maxBossBarCount)
             {
                 break;
+            }
+        }
+    }
+
+    // finally, render sky on all transparent spots
+
+    for (cveci2 &renderPosition : blocksToBeDrawn)
+    {
+        cveci2 &relativePosition = renderPosition - pos00;
+        if (shouldRenderAxis[axisID::y][relativePosition.y])
+        {
+            if (shouldRenderAxis[axisID::x][relativePosition.x])
+            {
+                block *const &blockToCheck = blockList[(int)surroundingBlocks.getValue(
+                    relativePosition + averageDistance)];
+                // TODO: only render sky when the block doesn't completely cover
+                if (!blockToCheck->willFillSquare)
+                {
+                    // render sky
+                    crectangle2 &blockRect = crectangle2(renderPosition, cveci2(1));
+                    crectangle2 &screenRect = targetData.worldToRenderTargetTransform.multRectMatrix(
+                        blockRect);
+                    dimensionIn->renderSky(blockRect, screenRect, targetData);
+                }
             }
         }
     }

@@ -73,7 +73,9 @@ struct block : INamable, IDestructable
 
 	std::shared_ptr<soundCollection> ambientSound = nullptr;
 
-	bool canReplaceBlock = false; // wether you can place another block inside this block to replace it
+	bool canReplaceBlock = false; // whether you can place another block inside this block to replace it
+
+	bool willFillSquare = true;//whether this block, when rendered, will completely fill the square with non-alpha colors
 
 	//loot
 

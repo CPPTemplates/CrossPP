@@ -1,6 +1,7 @@
 #include <string>
 #include "math/graphics/color/color.h"
 #include "colorID.h"
+#include "math/graphics/color/colorFunctions.h"
 #pragma once
 const std::wstring colorNames[(int)colorID::count]
 {

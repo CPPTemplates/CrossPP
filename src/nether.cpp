@@ -114,7 +114,7 @@ void nether::renderSky(crectangle2& blockRect, crectangle2 & drawRect, const gam
 	//BGR
 	const color& skyColor = color(colorf(value, math::maximum(((value + (1 - humidity)) - 1), (fp)0), 1 - value));
 
-	fillRectangle(targetData.renderTarget, ceilRectangle(drawRect), solidColorBrush(skyColor));
+	fillRectangle(targetData.renderTarget, ceilRectangle(drawRect), colorMixer(targetData.renderTarget, solidColorBrush(skyColor)));
 }
 
 biomeID nether::getBiome(cvec2& position) const

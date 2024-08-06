@@ -88,6 +88,13 @@ block::block(blockID identifier, fp hardness, fp blastResistance, cfp &weightPer
 	  canReplaceBlock(canReplaceBlock),
 	  experienceWhenBroken(experienceWhenBroken)
 {
+	// we check for block light filter strength, because there are solid blocks which don't allow block light, but do allow sunlight
+	if (filterStrength[(int)levelID::light + (int)lightLevelID::blockLight] != maxLightLevel &&
+		!(isTreeType(identifier) && is_in(getTreeItemType(identifier), treeItemTypeID::log, treeItemTypeID::strippedLog)))
+	{
+		willFillSquare = false;
+	}
+
 	std::copy(filterStrength, filterStrength + (size_t)levelID::count, this->filterStrength);
 	std::copy(emittanceLevel, emittanceLevel + (size_t)levelID::count, this->emittanceLevel);
 }

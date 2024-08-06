@@ -8,7 +8,7 @@ struct jigsawData :facingData
 	std::wstring targetName = std::wstring();
 
 	std::wstring targetPoolName = std::wstring();
-	//wether the placed structure can be rolled in order to fit
+	//whether the placed structure can be rolled in order to fit
 	bool rollable = false;
 
 	//if the structure this jigsaw places keeps it jigsaws or generates the rest of the structure

@@ -11,6 +11,7 @@
 #include "math/graphics/brush/brushes/colorMaximizer.h"
 #include "math/LayerNoiseSimplex.h"
 #include "math/random/shufflerandom.h"
+#include "include/math/graphics/brush/brushes/alphaMask.h"
 
 // https://www.researchgate.net/figure/Fitting-effect-of-wind-speed-probability-distribution_fig2_359780398
 const transition<fp> noiseValueToWindSpeed = transition<fp>(std::vector<keyFrame<fp>>({
@@ -295,7 +296,6 @@ void overWorld::initialize()
                                                 weatherInfluenceScales,
                                                 crectangle1::fromOppositeCorners(cvec1(0),
                                                                                  cvec1(1)));
-
 
     std::vector<vec3> directionInfluenceScales{
         vec3(vec2(0x10), ticksPerRealLifeSecond * 5),
@@ -641,7 +641,7 @@ void overWorld::renderSky(crectangle2 &blockRect, crectangle2 &drawRect,
     cvec2 &position = blockRect.getCenter();
     cfp height = position.y;
     cfp temperature = getTemperature(position); // biomeTemperatureNoise->evaluate(vec1(position.x));
-    //cfp humidity = 0.5;                         // biomeHumidityNoise->evaluate(vec1(position.x));
+    // cfp humidity = 0.5;                         // biomeHumidityNoise->evaluate(vec1(position.x));
     cfp cloudThickness = cloudThicknessNoise->evaluate(cvec1(currentWorld->currentTime));
 
     // color(40, 94, 181);
@@ -656,8 +656,6 @@ void overWorld::renderSky(crectangle2 &blockRect, crectangle2 &drawRect,
                         math::lerp((fp)1, (fp)0.7, math::squared(cloudThickness))),
                     (fp)0, (fp)1));
     const color airColor = color(hsv2rgb(airColorHSV));
-
-    fillRectangle(targetData.renderTarget, ceilRectangle(drawRect), solidColorBrush(airColor));
 
     if (settings::videoSettings::currentGraphicsMode != graphicsMode::fast)
     {
@@ -675,14 +673,15 @@ void overWorld::renderSky(crectangle2 &blockRect, crectangle2 &drawRect,
         rectangle2 croppedSunRect = sunRect;
         if (drawRect.cropClientRect(croppedSunRect))
         {
-            const auto &backGroundToSun = transformBrush<resolutionTexture>(
+            const auto &backGroundToSun = transformBrush(
                 mat3x3::fromRectToRect(sunRect, crectangle2(0, 0, sunTexture->defaultSize.x,
                                                             sunTexture->defaultSize.y)),
                 *sunTexture);
 
-            const auto &maximizer = colorMaximizer<texture, transformBrush<resolutionTexture>>(
-                targetData.renderTarget, backGroundToSun);
-            fillRectangle(targetData.renderTarget, ceilRectangle(croppedSunRect), maximizer);
+            const auto& airBrush = solidColorBrush(airColor);
+            const auto &maximizer = colorMaximizer(
+                airBrush, backGroundToSun);
+            fillRectangle(targetData.renderTarget, ceilRectangle(croppedSunRect), colorMixer(targetData.renderTarget, maximizer));
 
             if (cloudThickness > 0.7) // raining
             {
@@ -695,4 +694,6 @@ void overWorld::renderSky(crectangle2 &blockRect, crectangle2 &drawRect,
             }
         }
     }
+
+    fillRectangle(targetData.renderTarget, ceilRectangle(drawRect), colorMixer(targetData.renderTarget, solidColorBrush(airColor)));
 }
