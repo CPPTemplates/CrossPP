@@ -26,7 +26,7 @@
             }
         },
         {
-            "label": "populate1",
+            "label": "populate",
             "type": "shell",
             "windows": {
                 "command": "powershell",
