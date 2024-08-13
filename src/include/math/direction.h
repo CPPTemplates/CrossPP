@@ -26,19 +26,19 @@ enum class directionID : int
 	positiveW,
 };
 
-constexpr axisID getAxis(const directionID& checkDirection)
+constexpr axisID getAxis(const directionID &checkDirection)
 {
 	return (axisID)((int)checkDirection / 2);
 }
 
-constexpr bool isPositive(const directionID& checkDirection)
+constexpr bool isPositive(const directionID &checkDirection)
 {
 	return (bool)((int)checkDirection % 2);
 }
 
-#pragma warning( push )
-#pragma warning( disable : 4061)
-constexpr int getAngle2DDegrees(const directionID& direction)
+#pragma warning(push)
+#pragma warning(disable : 4061)
+constexpr int getAngle2DDegrees(const directionID &direction)
 {
 	switch (direction)
 	{
@@ -55,18 +55,31 @@ constexpr int getAngle2DDegrees(const directionID& direction)
 		return 0;
 	}
 }
-#pragma warning( pop )
+#pragma warning(pop)
 
-constexpr fp getAngle2D(const directionID& direction)
+// rotationindegrees can be 0, 90, 180 or 270
+constexpr directionID rotate2DDegrees(const directionID &direction, cint &rotationInDegrees)
+{
+	// this integer stores the table of rotations, ordered by direction (row) and rotation (column).
+	constexpr uint32_t rotationTable = // 0b00011011111000010100111010110100
+									   // the table is reversed here, because lower numbers are further to the right.
+		0b00011110101100010100101111100100;
+	cint &tableIndex = ((int)direction +										// column offset (rotationindegrees / 90 * 4)
+						rotationInDegrees / 22)									// row offset
+					   * 2;														// multiply by element size
+	return (directionID)((rotationTable & (0b11 << tableIndex)) >> tableIndex); // each item takes 2 bits
+}
+
+constexpr fp getAngle2D(const directionID &direction)
 {
 	return getAngle2DDegrees(direction) * math::degreesToRadians;
 }
 
-constexpr directionID getDirection(caxisID& axis, cbool& positive)
+constexpr directionID getDirection(caxisID &axis, cbool &positive)
 {
 	return (directionID)(((int)axis * 2) + (positive ? 1 : 0));
 }
-constexpr directionID flipDirection(const directionID& directionToFlip)
+constexpr directionID flipDirection(const directionID &directionToFlip, cint &shouldFlip = 1)
 {
-	return getDirection(getAxis(directionToFlip), !isPositive(directionToFlip));
+	return (directionID)((int)directionToFlip ^ shouldFlip);
 }
