@@ -6,6 +6,10 @@
 #include "math/uuid.h"
 #pragma once
 
+/// @brief 
+/// @return a generator based on the current nanosecond
+std::mt19937 getGeneratorBasedOnTime();
+
 template <typename t = int, typename = std::enable_if_t<std::is_integral_v<t>>>
 inline t rand(std::mt19937 &generator)
 {

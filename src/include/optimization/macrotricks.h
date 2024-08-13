@@ -85,7 +85,7 @@
 		}                                                                                                                                      \
 		return result;                                                                                                                         \
 	}                                                                                                                                          \
-	template <typename t2, typename resultType = std::enable_if_t<std::is_arithmetic_v<t2>, decltype(std::declval<t>() o std::declval<t2>())>>   \
+	template <typename t2, typename resultType = std::enable_if_t<std::is_arithmetic_v<t2>, decltype(std::declval<t>() o std::declval<t2>())>> \
 	functionType friend decltype(auto) operator o(const t2 &a, const structType &b)                                                            \
 	{                                                                                                                                          \
 		newExpression(resultType, b) auto resultPtr = result.begin();                                                                          \
@@ -97,7 +97,7 @@
 		return result;                                                                                                                         \
 	}                                                                                                                                          \
 	template <typename t2>                                                                                                                     \
-	functionType void operator o##=(const otherStructType &b)                                                                                  \
+	functionType structType operator o##=(const otherStructType &b)                                                                            \
 	{                                                                                                                                          \
 		auto const &endPtr = end();                                                                                                            \
 		auto bPtr = b.begin();                                                                                                                 \
@@ -105,6 +105,7 @@
 		{                                                                                                                                      \
 			*thisPtr o## = (*bPtr);                                                                                                            \
 		}                                                                                                                                      \
+		return *this;                                                                                                                       \
 	}                                                                                                                                          \
 	template <typename t2>                                                                                                                     \
 	functionType typename std::enable_if<std::is_arithmetic_v<t2>, void>::type operator o##=(const t2 &b)                                      \
