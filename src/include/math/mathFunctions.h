@@ -137,9 +137,9 @@ namespace math
 	template <typename t>
 	constexpr t floor(const t value, const t unit)
 	{
-		cfp divided = (fp)value / unit;			// divide by the value
+		cfp divided = (fp)value / (fp)unit;			// divide by the value
 		cfp flooredValue = std::floor(divided); // round towards zero
-		return (t)(flooredValue * unit);		// multiply back, so we basically rounded it down in units of [unit]
+		return (t)(flooredValue * (fp)unit);		// multiply back, so we basically rounded it down in units of [unit]
 	}
 	// floors a value to a unit and substracts the input from the result (mod(5,2) will return 1)
 	template <typename t>
