@@ -83,31 +83,32 @@ inline void copyArrayUnsafe(const array2d<t> &source, const array2d<t> &destinat
     }
 }
 
-template <typename t, fsize_t n>
-inline void copyArray(const array2d<t> &source, const arraynd<t, n> &destination, cveci2 &destinationPosition)
-{
-    // crop rectangle
-    rectanglei2 rect = rectanglei2(destinationPosition.x, destinationPosition.y, source.size.x, source.size.y);
-    destination.getClientRect().cropClientRect(rect);
-    copyArrayUnsafe(crectanglet2<fsize_t>(rect), source.size.x, source.baseArray);
-}
-
 template <typename valueType, fsize_t n>
 inline void copyArray(const arraynd<valueType, n> &source, const arraynd<valueType, n> &destination, crectanglei2 &sourceRect, cveci2 &destinationPosition)
 {
+    //crop the rectangle both by source and destination
+    //we can do this by cropping the sourcerect, then moving it to the destination, and then cropping it by the destination as well.
+    //afterwards, we calculate the sourcerect again
     rectanglei2 croppedSourceRect = sourceRect;
     if (crectanglei2(source.getClientRect()).cropClientRect(croppedSourceRect))
     {
-
-        rectanglei2 croppedDestinationRect = crectanglei2(
-            destinationPosition + (croppedSourceRect.pos0 - sourceRect.pos0),
+        cveci2& sourceRectCropOffset = croppedSourceRect.pos0 - sourceRect.pos0;
+        crectanglei2& destinationRect = crectanglei2(
+            destinationPosition + sourceRectCropOffset,
             croppedSourceRect.size);
+        rectanglei2 croppedDestinationRect = destinationRect;
 
         crectanglei2(destination.getClientRect()).cropClientRect(croppedDestinationRect);
 
-        // cveci2 croppedSourcePosition = croppedSourceRect.pos0 + (croppedDestinationRect.pos0 - croppedDestinationPosition);
+        croppedSourceRect = rectanglei2(croppedSourceRect.pos0 + (croppedDestinationRect.pos0 - destinationRect.pos0), croppedDestinationRect.size);
+
         copyArrayUnsafe(source, destination, crectanglet2<fsize_t>(croppedSourceRect), croppedDestinationRect.pos0);
     }
+}
+template <typename t, fsize_t n>
+inline void copyArray(const array2d<t> &source, const arraynd<t, n> &destination, cveci2 &destinationPosition = veci2())
+{
+    copyArray(source, destination, source.getClientRect(), destinationPosition);
 }
 
 template <typename valueType, fsize_t n>
