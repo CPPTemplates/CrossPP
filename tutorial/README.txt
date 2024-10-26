@@ -33,8 +33,8 @@ sfml-system
 sfml-window
 )
 
-if you need a library like zlib, you can also install it with vcpkg.
-vcpkg install zlib
+MSYS doesn't work with vcpkg!
+
 it will give instructions on what to put in cmakelists.txt!
 
 undefined reference while reference is defined: recompile cmakelists.txt. you probably added a .cpp file
@@ -106,9 +106,6 @@ https://stackoverflow.com/questions/12434123/how-to-include-the-stdafx-h-from-th
 how to disable warnings from external headers, including imageloader.h:
 https://developercommunity.visualstudio.com/t/pragma-warningpush-0-no-longer-works/1433518
 
-to include sfml:
-use vcpkg (click on an include directive to see)
-
 a window is attached to a thread. use that thread only!
 do the rendering preferrably on the main thread, while the game itself can be on another thread.
 
@@ -136,14 +133,6 @@ include file problems: specify include folder both in the c_cpp_properties.json 
 
 when having an empty build folder:
 run CMake: configure
-
-no builtin-baseline:
-https://stackoverflow.com/questions/75184879/builtin-baseline-in-vcpkg-for-installing-franka-matlab
-run vcpkg x-update-baseline --add-initial-baseline
-
-when installing vcpkg packages, browse on https://vcpkg.io/en/packages to find them and their version!
-
-follow instructions of the packages! look what INCLUDE_DIRS they need on the command line!
 
 fatal error RC1107: invalid usage; use RC /? for Help:
 you included resource (.rc) files?
@@ -305,8 +294,6 @@ all files appear to be rolled back:
 check if you're in the right directory and if you're the right user!!
 
 TODO:
-
-maybe add vcpkg-configuration.json for version consistency (see https://learn.microsoft.com/en-us/vcpkg/get_started/get-started?pivots=shell-cmd)
 
 add cmake-toolchain for cross-compile
 

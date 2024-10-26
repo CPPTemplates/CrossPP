@@ -112,17 +112,10 @@ jobs:
         run: |
           brew install ninja
           brew install openal-soft
-        # installed already
-        # brew install vcpkg
 
       - name: checkNinja # shell: msys2 {0}
         run: ninja --version
 
-      - name: install-vcpkg
-        run: |
-          git clone https://github.com/microsoft/vcpkg.git
-          cd vcpkg
-          ./bootstrap-vcpkg.sh
 
       - name: Set reusable strings
         # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.

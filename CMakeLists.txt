@@ -26,7 +26,6 @@ message("sfml directory: ${SFML_DIR}")
 # increase the amount of i's to update cmakelists.txt:
 # iiiiiiiiiii
 
-#set(CMAKE_TOOLCHAIN_FILE $ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake)
 
 IF(ANDROID)
     message ("android is defined")
@@ -80,8 +79,6 @@ ELSE()
         set(CMAKE_C_COMPILER /usr/bin/gcc)
         set(CMAKE_CXX_COMPILER /usr/bin/g++)
     ENDIF()
-    set(VCPKG_VERSION edge)
-    include(vcpkg.cmake)
 ENDIF()
 
 

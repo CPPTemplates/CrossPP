@@ -1,9 +1,0 @@
-{
-  "registries": [
-    {
-      "kind": "artifact",
-      "location": "https://aka.ms/vcpkg-ce-default",
-      "name": "microsoft"
-    }
-  ]
-}
