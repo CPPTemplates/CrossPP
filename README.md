@@ -11,3 +11,7 @@ https://github.com/acsbendi/Build-SFML-For-Android-On-Windows
 
 CAUTION!
 vcpkg doesn't work with SFML. therefore, you should have MinGW and MSYS installed on your PC when on windows.
+
+to install CMake, Ninja and zlib:
+make sure to have MSYS2 MINGW64 installed!
+pacman -S mingw-w64-x86_64-cmake mingw-w64-x86_64-ninja mingw-w64-x86_64-zlib
