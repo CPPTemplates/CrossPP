@@ -54,7 +54,7 @@ inline void throwIfFalse(cbool& shouldBeTrue, std::wstring errorMessageIfFalse =
 
 //for if the compiler gets smarter.
 
-/*constexpr __forceinline void assumeInRelease(cbool& shouldBeTrue, std::wstring errorMessageIfFalse = L"")
+/*constexpr __forceinline void assumeInRelease(cbool& shouldBeTrue, std::wstring errorMessageIfFalse = std::wstring())
 {
 #ifdef _DEBUG
 	if (!shouldBeTrue)

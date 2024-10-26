@@ -1,0 +1,28 @@
+{
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "small1"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "small2"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "small3"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "small4"
+      }
+    }
+  ]
+}

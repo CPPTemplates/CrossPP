@@ -1,0 +1,22 @@
+{
+  "elements": [
+    {
+      "weight": 4,
+      "element": {
+        "location": "corridor_with_chest"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "corridor_end"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "crossing"
+      }
+    }
+  }
+}

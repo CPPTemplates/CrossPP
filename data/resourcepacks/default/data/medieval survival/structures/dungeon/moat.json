@@ -1,0 +1,16 @@
+{
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "lava_moat"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "water_moat"
+      }
+    }
+  ]
+}

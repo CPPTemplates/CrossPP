@@ -8,7 +8,7 @@ bool collides1d(cfp& x0, cfp& w0, cfp& x1, cfp& w1)
 		((x1 + w1) > x0); //x
 }
 
-//returns wether a rectangle intersects with another rectangle
+//returns whether a rectangle intersects with another rectangle
 //doesn't collide when the edges touch each other exactly
 bool collides2d(crectangle2& r1, crectangle2& r2)
 {
@@ -16,7 +16,7 @@ bool collides2d(crectangle2& r1, crectangle2& r2)
 		r1.pos0.y + r1.size.y > r2.pos0.y && r1.pos0.y < r2.pos0.y + r2.size.y;//y
 }
 
-//returns wether a texture intersects with another texture on alpha
+//returns whether a texture intersects with another texture on alpha
 bool collides2d(texture* tex1, mat3x3 transform1, texture* img2, mat3x3 transform2)
 {
 	//inverse transform of img2
@@ -42,7 +42,7 @@ bool collides2d(texture* tex1, mat3x3 transform1, texture* img2, mat3x3 transfor
 	return false;
 }
 
-//returns wether a complex 2d shape intersects with another complex 2d shape
+//returns whether a complex 2d shape intersects with another complex 2d shape
 bool collides2d(const std::vector<vec2>& v1, const std::vector<vec2>& v2, cbool& checkinside)
 {
 	vec2 lastv1 = *(v1.end() - 1);

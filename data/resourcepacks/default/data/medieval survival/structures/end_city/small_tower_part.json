@@ -1,0 +1,16 @@
+{
+  "elements": [
+    {
+      "weight": 3,
+      "element": {
+        "location": "small_tower_extension"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "small_room"
+      }
+    }
+  ]
+}

@@ -6,7 +6,7 @@ bool doEvents();
 
 //bool GetClipboardText(std::wstring& result);
 
-//returns wether this key is pressed
+//returns whether this key is pressed
 //source:
 //https://stackoverflow.com/questions/41606356/catch-ctrlalt-keys-in-wndproc
 //inline bool pressed(cushort& key)

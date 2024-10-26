@@ -1,0 +1,27 @@
+{
+  "elements": [
+    {
+      "weight": 2,
+      "element": {
+        "location": "stairs_top"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "stairs_bottom"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "stairs"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "crosssing"
+      }
+    }
+}

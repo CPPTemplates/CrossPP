@@ -318,7 +318,5 @@ wind too fast
 enderman should become mad when slapped (anger sound)
 remove AI
 
-
-
-philadelphia
-punten doorgestuurd
+rendering should NEVER change the world, because it is multithreaded! for example:
+a player cannot be swapping slots in the render() function!

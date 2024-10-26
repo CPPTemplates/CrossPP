@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "minecraft:stone"
+    },
+    "result": "minecraft:cobblestone",
+    "group": "stonetosand",
+    "count": 1
+}

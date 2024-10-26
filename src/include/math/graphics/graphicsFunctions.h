@@ -2,6 +2,7 @@
 #include "array/arraynd/arraynd.h"
 #include "math/rectangle/rectanglefunctions.h"
 #include "math/graphics/resolutiontexture.h"
+#include "brush/brushes/colorMixer.h"
 
 // the rect should be relative to the default size.
 template <typename brush0Type>

@@ -1,0 +1,16 @@
+{
+  "elements": [
+    {
+      "weight": 16,
+      "element": {
+        "location": "tower_wall"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "tower_arm"
+      }
+    }
+  ]
+}
