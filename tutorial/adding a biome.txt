@@ -1,8 +1,0 @@
-- add biomeID
-- copy biome class
-- add to biome list from world
-- add to noise options
-- add biome color
-- add to biome data list
-
-for adding blocks, look at "adding a block"

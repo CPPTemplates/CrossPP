@@ -1,7 +1,0 @@
-steps:
-
-- increase currentfileversionID
-- increase version.txt
-- add to blockid list
-- copy and paste line in resource packs
-- add to default resource pack

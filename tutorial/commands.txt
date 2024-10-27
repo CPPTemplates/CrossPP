@@ -1,5 +1,0 @@
-/data merge entity @p 
-/data merge entity @p {new position: {x: -210.0, y: 10.0}}
-
-full enchanted dia:
-/data merge entity @p {armor slots: {slots: [{item id: 810, amount: 1, enchantments: [{id: 26, power: 1000 }, {id: 36, power: 1000 }, {id: 37, power: 1000 } ] }, {item id: 811, amount: 1, enchantments: [{id: 26, power: 1000 }, {id: 36, power: 1000 }, {id: 37, power: 1000 } ] }, {item id: 812, amount: 1, enchantments: [{id: 26, power: 1000 }, {id: 36, power: 1000 }, {id: 37, power: 1000 }, {id: 37, power: 1000 } ] }, {item id: 813, amount: 1, enchantments: [{id: 26, power: 1000 }, {id: 36, power: 1000 }, {id: 37, power: 1000 } ] } ] }}

@@ -24,9 +24,7 @@ message("sfml directory: ${SFML_DIR}")
 # Shoutout to CMake guide: https://eliasdaler.github.io/using-cmake/
 
 # increase the amount of i's to update cmakelists.txt:
-# iiiiiiiiiiii
-# ms builds:
-# ii
+# iiiiiiiiiii
 
 
 IF(ANDROID)

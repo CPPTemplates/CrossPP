@@ -100,7 +100,7 @@ std::filesystem::path getCommonAppDataFolder()
     if (res == JNI_ERR)
     {
         handleError(L"couldn't attach to current thread");
-        return std::wstring();
+        return L"";
     }
 
     // https://stackoverflow.com/questions/7701801/obtaining-the-name-of-an-android-apk-using-c-and-the-nativeactivity-class
