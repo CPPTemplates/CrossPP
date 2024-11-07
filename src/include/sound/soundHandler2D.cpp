@@ -15,7 +15,6 @@
 #include "math/graphics/texture.h"
 #include "math/graphics/graphicsFunctions.h"
 #include "math/graphics/brush/brushes/solidColorBrush.h"
-#include "../../../lib/headers/AL/alext.h"
 
 constexpr int maxSources = 0x100;
 soundHandler2d handler = soundHandler2d();

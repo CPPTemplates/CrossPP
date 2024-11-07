@@ -108,7 +108,7 @@ include_directories(src/include)
 include_directories( ${ZLIB_INCLUDE_DIRS} )
 
 # 3rd party dependencies
-add_subdirectory(lib)
+#add_subdirectory(lib)
 
 #include more modern AL headers (when sfml updated openAL, they didn't update the headers)
 include_directories(lib/headers)
@@ -162,7 +162,7 @@ ENDIF()
 
 target_compile_options(${PROJECT_NAME} PRIVATE -Wno-type-limits)
 
-#find_package(SFML 2.6.1 COMPONENTS audio network graphics system window REQUIRED)
+find_package(SFML 2.6.1 COMPONENTS audio network graphics system window REQUIRED)
 IF(SFML_STATIC_LIBRARIES)
     target_link_libraries(${PROJECT_NAME} PUBLIC -static-libgcc -static-libstdc++)
     set(CMAKE_EXE_LINKER_FLAGS " -static")
