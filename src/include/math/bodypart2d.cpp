@@ -1,8 +1,8 @@
 #include "bodypart2d.h"
 
-bodyPart2D::bodyPart2D(crectangle2& textureRect, bodyPart2D* const& parent, cvec2& translate, cvec2& size, cvec2& rotationCentre, cfp& angle, cint& textureAngle, cbool& hasTransparency)
+bodyPart2D::bodyPart2D(crectangle2& textureRect, bodyPart2D* const& parent, cvec2& translate, cvec2& size, cvec2& rotationCenter, cfp& angle, cint& textureAngle, cbool& hasTransparency)
 {
-	this->rotationCentre = rotationCentre;
+	this->rotationCenter = rotationCenter;
 	this->translate = translate;
 	this->parent = parent;
 	this->size = size;
@@ -22,12 +22,12 @@ void bodyPart2D::CalculateTransform()
 
 	if (flipX)
 	{
-		transforms.push_back(mat3x3::mirror(axisID::x, -rotationCentre.x + size.x * 0.5));
+		transforms.push_back(mat3x3::mirror(axisID::x, -rotationCenter.x + size.x * 0.5));
 	}
 
 	if (flipY)
 	{
-		transforms.push_back(mat3x3::mirror(axisID::y, -rotationCentre.y + size.y * 0.5));
+		transforms.push_back(mat3x3::mirror(axisID::y, -rotationCenter.y + size.y * 0.5));
 	}
 
 	if (angle != 0)
@@ -40,7 +40,7 @@ void bodyPart2D::CalculateTransform()
 	transforms.push_back(mat3x3::translate(translate));
 	applied = mat3x3::combine(transforms);
 
-	scalecentre = mat3x3::fromRectToRotatedRect(textureRect, textureAngle, crectangle2(-rotationCentre, size));
+	scalecenter = mat3x3::fromRectToRotatedRect(textureRect, textureAngle, crectangle2(-rotationCenter, size));
 }
 
 void bodyPart2D::CalculateAllTransforms()
@@ -74,10 +74,10 @@ mat3x3 bodyPart2D::getCumulativeParentTransform() const
 
 mat3x3 bodyPart2D::getCumulativeTextureTransform()
 {
-	return mat3x3::cross(getCumulativeTransform(), scalecentre);
+	return mat3x3::cross(getCumulativeTransform(), scalecenter);
 }
 
-vec2 bodyPart2D::getRotationCentrePosition() const
+vec2 bodyPart2D::getRotationCenterPosition() const
 {
 	return getCumulativeParentTransform().multPointMatrix(translate);
 }

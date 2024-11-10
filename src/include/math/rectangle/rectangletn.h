@@ -380,7 +380,7 @@ public:
 	{
 		for (size_t i = 0; i < axisCount; i++)
 		{
-			if ((pos[i] + 1) < pos1[i] || (i == (axisCount - 1)))
+			if ((pos[i] + 1) < pos1[i])
 			{
 				++pos[i];
 				return *this;
@@ -390,7 +390,8 @@ public:
 				pos[i] = pos0[i];
 			}
 		}
-		throw "";
+		pos[axisCount - 1]++;
+		return *this;
 	}
 	// --prefix operator
 	constexpr rectIteratortn &operator--()
@@ -414,16 +415,16 @@ public:
 	// postfix++ operator
 	constexpr rectIteratortn operator++(int)
 	{
-		t retval = *this;
+		const rectIteratortn copy = *this;
 		++(*this);
-		return retval;
+		return copy;
 	}
 	// postfix-- operator
 	constexpr rectIteratortn operator--(int)
 	{
-		t retval = *this;
+		const rectIteratortn copy = *this;
 		--(*this);
-		return retval;
+		return copy;
 	}
 	constexpr bool operator==(const rectIteratortn &other) const
 	{
@@ -435,7 +436,7 @@ public:
 	{
 		return other.pos != pos;
 	}
-	constexpr const vectn<t, axisCount> &operator*() const
+	constexpr const vectn<t, axisCount> operator*() const
 	{
 		if constexpr (isDebugging)
 		{

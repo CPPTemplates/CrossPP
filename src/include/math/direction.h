@@ -36,6 +36,12 @@ constexpr bool isPositive(const directionID &checkDirection)
 	return (bool)((int)checkDirection % 2);
 }
 
+/// returns -1 for negative directions, +1 for positive directions
+constexpr int getSign(const directionID &direction)
+{
+	return ((int)direction % 2) * 2 - 1;
+}
+
 #pragma warning(push)
 #pragma warning(disable : 4061)
 constexpr int getAngle2DDegrees(const directionID &direction)

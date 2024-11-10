@@ -345,9 +345,6 @@ struct vectn
     }
 
     inline static vectn cross(const vectn &lhs, const vectn &rhs) {
-        using baseVec<t, n>::x;
-        using baseVec<t, n>::y;
-        using baseVec<t, n>::z;
         return vectn(
                 lhs.y * rhs.z - lhs.z * rhs.y,
                 lhs.z * rhs.x - lhs.x * rhs.z,

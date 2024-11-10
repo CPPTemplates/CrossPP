@@ -31,7 +31,7 @@ bool collides2d(cvec2& a0, cvec2& a1, cvec2& b0, cvec2& b1);
 bool collides2d(cvec2& a0, cvec2& a1, cvec2& b0, cvec2& b1, vec2& intersection);
 
 bool collideraysphere(const vec3& rayorigin, const vec3& raydirection, cfp radius, fp& t0, fp& t1);
-bool collideraysphere(const vec3& rayorigin, const vec3& raydirection, const vec3& spherecentre, cfp radius, fp& t0, fp& t1);
+bool collideraysphere(const vec3& rayorigin, const vec3& raydirection, const vec3& spherecenter, cfp radius, fp& t0, fp& t1);
 bool collidespheresSpeed(cvec2& spherePos1, cfp& sphereRadius1, cvec2& sphereVelocity1, cvec2& spherePos2, cfp& sphereRadius2, cvec2& sphereVelocity2, fp& time);
 
 
