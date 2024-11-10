@@ -7,6 +7,8 @@
 #include "math/sphere/sphereCollisions.h"
 #include "math/graphics/brush/brushes.h"
 
+application* currentApplication = nullptr;
+
 struct gameForm : public form
 {
 	static constexpr int sphereCount = 0x10;
@@ -119,7 +121,7 @@ struct gameForm : public form
 		// lets build a ray tracer.
 		// for each pixel, shoot a ray from the camera.
 
-		constexpr int pixelScale = 2;
+		constexpr int pixelScale = 1;
 		// texture rayTracingTexture = texture(renderTarget.size / pixelScale, false);
 
 		// downscaled rectangle
@@ -129,7 +131,7 @@ struct gameForm : public form
 		// move the camera the way we move the rays too
 
 		// cameraPosition += movementDirections * 0.1;
-		cfp &speed = 0.1;
+		cfp &speed = 1.0 / 60.0 * (1 + (int)currentApplication->loop.skippedIterations);
 		if (movementDirections.lengthSquared() > 0)
 		{
 			cvec3 &movementRayDirection = (cameraRight * movementDirections.x + cameraUp * movementDirections.y + cameraForward * movementDirections.z).normalized();
@@ -205,5 +207,8 @@ int main(int argc, char *argv[])
 {
 	// execute this function before you do anything,
 	initialize();
-	return application(mainForm, gameName).run();
+	currentApplication = new application(mainForm, gameName);
+	cint& result = currentApplication->run();
+	delete currentApplication;
+	return result;
 }

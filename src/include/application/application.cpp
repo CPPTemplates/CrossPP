@@ -56,8 +56,9 @@ int application::run()
     // Create a sprite to display the texture
 
     // cap at 60fps
+	fp cappedFps = 60;
     cmicroseconds &frameTime = (microseconds)(1000000 / cappedFps);
-    stableLoop loop = stableLoop(frameTime);
+    loop = stableLoop(frameTime);
     // changeKeyboardLayout();
     // windowSprite->scale(1, -1);
     // windowSprite->move(0, (float)size.y);

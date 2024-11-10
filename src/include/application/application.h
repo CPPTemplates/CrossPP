@@ -11,6 +11,7 @@
 #include "event/eventhandler.h"
 #include <future>
 #include "math/graphics/doubleBuffer.h"
+#include <optimization/stableTickLoop.h>
 
 struct application: INamable, IDestructable
 {
@@ -32,7 +33,7 @@ struct application: INamable, IDestructable
 
 	//vecl2 MousePos = vecl2();
 	//clientInput input = clientInput();
-	fp cappedFps = 60;
+	stableLoop loop;
 
     mat3x3 screenToApp = mat3x3();
 	//function pointer to initialize the form
