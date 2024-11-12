@@ -21,14 +21,38 @@
 			</ArrayItems>
 		</Expand>
 	</Type>
-	<Type Name="vectn&lt;*&gt;">
-		<DisplayString>{{ {($T1*)axis,$T2na} }}</DisplayString>
-		<Expand>
+	<!--works too!-->
+	<Type Name="baseVec&lt;*,*&gt;">
+		<DisplayString>x={($T1)*this}, y={*((($T1*)this) + 1)}</DisplayString><!--
+		1:
+		{{{($T1*)axis,$T2na} }}
+		2:
+		{{x={($T1)*this}, y={*((($T1*)this) + 1)}}}
+		-->
+		<!-- <Expand>
 			<ArrayItems>
 				<Size>$T2</Size>
 				<ValuePointer>axis</ValuePointer>
 			</ArrayItems>
-		</Expand>
+		</Expand>-->
+	</Type>
+	<!--<Type Name="vectn&lt;*,*&gt;">
+	works for color
+	</Type>-->
+	<!--<Type
+	Name="cveci2">
+		works!
+		<DisplayString>test3</DisplayString>
+	</Type>-->
+	<Type Name="gameForm">
+		<DisplayString>form</DisplayString><!--{{
+		{($T1*)axis,$T2na} }}-->
+		<!-- <Expand>
+			<ArrayItems>
+				<Size>$T2</Size>
+				<ValuePointer>axis</ValuePointer>
+			</ArrayItems>
+		</Expand>-->
 	</Type>
 	<Type Name="arraynd&lt;*,*&gt;">
 		<DisplayString>{{ size={size} }}</DisplayString>
