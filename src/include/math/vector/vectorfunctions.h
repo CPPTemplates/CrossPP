@@ -87,3 +87,19 @@ constexpr vectn<t, n> reflect(const vectn<t, n> &vector, const vectn<t, n> &norm
 {
 	return vector - (2 * vectn<t, n>::dot(vector, normal)) * normal;
 }
+
+//https://stackoverflow.com/questions/849211/shortest-distance-between-a-point-and-a-line-segment
+constexpr fp distanceToLineSegment(cvec2 &lineStart, cvec2 &lineEnd, cvec2 &p)
+{
+	// Return minimum distance between line segment vw and point p
+	cfp &l2 = (lineStart - lineEnd).lengthSquared(); // i.e. |lineEnd-lineStart|^2 -  avoid a sqrt
+	if (l2 == 0.0)
+		return (p - lineStart).length(); // lineStart == lineEnd case
+	// Consider the line extending the segment, parameterized as lineStart + t (lineEnd - lineStart).
+	// We find projection of point p onto the line.
+	// It falls where t = [(p-lineStart) . (lineEnd-lineStart)] / |lineEnd-lineStart|^2
+	// We clamp t from [0,1] to handle points outside the segment vw.
+	cfp &t = math::clamp(vec2::dot(p - lineStart, lineEnd - lineStart) / l2, (fp)0, (fp)1);
+	const cvec2 &projection = math::lerp(lineStart, lineEnd, t); // Projection falls on the segment
+	return (p - projection).length();
+}
